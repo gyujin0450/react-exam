@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2.1.2(p95)</title>
+  <!-- React 및 JSX 관련 라이브러 CDN -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>  
+</head>
+<body>
+  <!-- 요소를 정의함 -->
+  <div id="disp"></div>
+  <!-- 스크립트를 정의함 -->
+  <script type="text/babel">
+    // 인사를 추출해서 DOM에 설정
+    const root = document.querySelector('#disp')
+    const msg = getGreeting()
+    ReactDOM.render(msg, root)
+
+    // 인사를 반환하는 함수
+    function getGreeting(){
+      // 임의의 3개 숫자 추출
+      const r = Math.floor(Math.random()*3)
+      console.log(`r = ${r}`)
+
+      // 값에 따라 메지시 반환
+      if (r==0) return <p>오늘도 즐거운 하루 되세요</p>
+      if (r==1) return <p>안녕하세요</p>
+      if (r==2) return <p>날씨가 좋네요</p>
+    } 
+  
+  </script>
+</body>
+</html>
