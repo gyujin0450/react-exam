@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2.2.2(p98)</title>
+  <!-- React 및 JSX 관련 라이브러 CDN -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>  
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    ReactDOM.render(
+      getDOM(),
+      document.getElementById('root')
+    )
+    // 요소를 반환하는 함수
+    function getDOM(){
+      // 객체로 스타일 지정
+      const css1 = {
+        "color": 'red',
+        "background-color": '#f0f0ff',
+        "font-size": '2em'
+      }
+      const css2 = {
+        color: 'blue',
+        backgroundColor: '#fff0f0',
+        fontSize: '2em'
+      } 
+
+      // Jsx로 DOM을 지정
+      return(
+        <div>
+          <p style={css1}>프로젝트 관리</p>
+          <p style={css2}>Slack...</p>
+        </div>
+      )
+    }
+  </script>
+</body>
+</html>
