@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2.6.1(p132)</title>
+  <!-- React 및 JSX 관련 라이브러 CDN -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>  
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // 컴포넌트 정의
+    class Hello extends React.Component {
+      render () {
+        // 이벤트를 정의함
+        const clickHandler = (e) => {
+          window.alert('안녕하세요.')
+        }
+
+        // 일반적인 클릭 이벤트 지정 방법
+        // <div onclick="clickHandler(e)"> ...</div>
+        // React에서 클릭 이벤트를 지정 방법
+        return (
+          <div onClick={clickHandler}> Click Me</div>
+        )
+      }
+    } // end of Hello class
+
+    // 컴포넌트 사용
+    ReactDOM.render(
+      <Hello />,
+      document.getElementById('root')
+    )
+  </script>
+</body>
+</html>

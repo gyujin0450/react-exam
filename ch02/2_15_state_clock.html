@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2.5.2(p129)</title>
+  <!-- React 및 JSX 관련 라이브러 CDN -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>  
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // 상태를 가진 시계 컴포넌트를 정의함
+    class SClock extends React.Component {
+      constructor (props) {
+        super(props)
+
+        // 컴포넌트의 상태를 초기화
+        this.state = {
+          now: (new Date())
+        }
+
+        // 매 초마다 상태를 변경함
+        setInterval((e) => {
+          this.setState({
+            now: (new Date())
+          })}, 1000)
+      }
+
+      // 렌더링할 내용을 반환함
+      render () {
+        const now = this.state.now
+        const hh = this.fmt(now.getHours())
+        const mm = this.fmt(now.getMinutes())
+        const ss = this.fmt(now.getSeconds())
+        return (<div>{hh}:{mm}:{ss}</div>)
+      }
+
+      fmt (v) {
+        const s = "00" + v
+        return s.substr(s.length - 2, 2)
+      }
+    } // end of SClock class
+
+    // 컴포넌트 배치
+    ReactDOM.render(<div><SClock /></div>,
+      document.getElementById('root')
+    )
+  </script>
+</body>
+</html>

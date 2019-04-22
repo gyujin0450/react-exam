@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2.6.1(p134)</title>
+  <!-- React 및 JSX 관련 라이브러 CDN -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>  
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // 컴포넌트 정의
+    class Hello extends React.Component {
+      constructor (props) {
+        super(props)
+        // 클릭 이벤트로 클래스의 메서드를 호출하고 싶을 때,
+        // 미리  clickHandler에 this를 바인드해야 this를 인식함
+        this.clickHandler = this.clickHandler.bind(this)
+      }
+
+      // 이벤트를 정의함
+      clickHandler (e) {
+        const name = this.props.name  // 최규진
+        window.alert(`${name} 님, 안녕하세요.`)
+      }
+
+      render () {
+        return (
+          // <div onClick={clickHandler}> Click Me</div>
+          // 클릭 이벤트를 지정함
+          <div onClick={this.clickHandler}> Click Me</div>
+        )
+      }
+    } // end of Hello class
+
+    // 컴포넌트 사용
+    ReactDOM.render(
+      <Hello name="최규진"/>,
+      document.getElementById('root')
+    )
+  </script>
+</body>
+</html>
