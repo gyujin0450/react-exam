@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2.4.3(p120)</title>
+  <!-- React 및 JSX 관련 라이브러 CDN -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>  
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // 클래스로 컴포넌트를 정의합니다.
+    class Greeting extends React.Component {
+      render() {
+        return <h1>{this.props.type}</h1>
+      }
+    }
+
+    // 컴포넌트 사용하기
+    const dom = <div>
+      <Greeting type="Hello" />
+      <Greeting type="Good morning!" />
+    </div>
+
+    // 리액트로 DOM의 내용을 변경함
+    ReactDOM.render(dom, document.getElementById('root'))
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2.2.2(p98)</title>
+  <!-- React 및 JSX 관련 라이브러 CDN -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>  
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // 정기적으로 시간을 출력함
+    setInterval(showClock, 1000)
+
+    // 매초마다 실행하는 함수
+    function showClock () {
+      const d = new Date()
+      const [hh, mm, ss] = [d.getHours(), d.getMinutes(), d.getSeconds() ]
+
+      const z2 = (v) => {
+        const s = "00" + v
+        // console.log(s)                    // 001
+        // console.log(3-2,2)                // 01
+        return s.substr(s.length - 2, 2)
+      }
+
+      // 출력할 DOM을 지정
+      const elem = (<div>{z2(hh)}:{z2(mm)}:{z2(ss)}</div>)
+
+      // DOM의 내용 변경
+      ReactDOM.render(elem, document.getElementById("root"))
+    }
+  </script>
+</body>
+</html>

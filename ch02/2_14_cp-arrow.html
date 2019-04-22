@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>2.2.2(p98)</title>
+  <!-- React 및 JSX 관련 라이브러 CDN -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>  
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // 일반 함수로 컴포넌트를 정의
+    const TitleParts = function (props) {
+      return (<div style={{backgroundColor: 'red', color: 'white'}}>
+        <h3>{props.title}</h3>
+      </div>)
+    }
+
+    // const TitleParts = (props) => (
+    //   <div style={{backgroundColor: 'red', color: 'white'}}>
+    //   <h3>{props.title}</h3>
+    //   </div>
+    // )
+
+    // 화살표 함수로 컴포넌트를 정의
+    const ContentParts = (props) => {
+      return (
+      <div style={{border: '1px solid blue', margin: 15}}>
+        <div>{props.body}</div>
+      </div>)
+    }
+    
+    // 화살표 함수로 컴포넌트를 정의 : {}, return 문이 1개일때 생략 기능!!
+    const Book = (props) => (
+      <div>
+        <TitleParts title={props.title} />
+        <ContentParts body={props.body} />
+      </div>
+    )
+
+    // 리액트로 DOM의 내용을 변경
+    ReactDOM.render((<div>      
+      <Book title="삼국지" body='옛날 증국 이야기'/>
+      <Book title="민수기" body='옛닐 중동 이야기'/>
+      <Book title="서유기" body='엣날 이야기'/>      
+    </div>), document.getElementById('root'))                                                                                          
+
+  </script>
+</body>
+</html>
