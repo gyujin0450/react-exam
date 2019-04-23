@@ -11,17 +11,46 @@ class Stopwatch extends Component {
       startTime: 0
     }
     this.timeId = 0
+
+    console.log('constructor')
   } // end of constructor
 
   // 마운트 했을 때
   componentWillMount () {
+    console.log('componentWillMount')
     this.timerId = setInterval(e => {
       this.tick()
     }, 1000)
   }
 
+  // ---------------------------------------------------------------
+  componentDidMount () {
+    console.log('componentDidMount')
+  }
+
+  // 변경
+  componentWillReceiveProps (nextProps) {
+    console.log('componentWillReceiveProps')
+  }
+
+  shouldComponentUpdate (nextProps, nextState) {
+    console.log('shouldComponentUpdate')
+    return true
+  }
+
+  componentWillUpdate () {
+    console.log('componentWillUpdate')
+  }
+
+  componentDidUpdate () {
+    console.log('componentDidUpdate')
+  }
+
+  // ---------------------------------------------------------------
+
   // 언마운트 했을때
   componentWillUnmount () {
+    console.log('componentWillUnmount')
     clearInterval(this.timerId)
   }
 
