@@ -1,3 +1,4 @@
+// 3.2.1 간단한 입력 양식 만들기
 import React from 'react'
 
 export class SimpleForm extends React.Component {

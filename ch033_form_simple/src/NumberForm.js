@@ -1,3 +1,4 @@
+// 3.2.2 숫자만 입력 받는 텍스트박스 만들기
 import React, { Component } from 'react'
 
 // 숫자 입력 컴포넌트
