@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3.6.1(p204)</title>
+  <!-- React 및 JSX 관련 라이브러 CDN -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>  
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // 입력 양식 컴포넌트
+    class LoginForm extends React.Component {
+      constructor (props){
+        super (props)
+        this.state = {
+          user: '',
+          pass: ''
+        }
+      }
+
+      render(){
+        const doSubmit = e => this.doSubmit(e)
+        const doChange = e => this.doChange(e)
+        
+        // 렌더링 내용
+        // input 요소의 DOM에 접근하고 시프으면 일단 ref 프로퍼티를 지정함
+        // 그리고 콜백 함수에서 this.user와 this.pass에 실제 input 요소의 인스턴스를 넣음
+        // 이렇게 지정하면 render() 메소드가 호출된 이후 this.user와 this.pass에 들어 있는
+        // DOM 요소를 직접 조작할 수 있게 됨...
+        // 텍스트 박스가 비어 있을 떼 DOM요소의 focus() 메소드를 호출해서 텍스트 박스에 초점을 맞춤
+        return (
+          <form onSubmit={doSubmit}>
+            <label>사용자 이름: <br/>
+              <input type='text' name='user'
+                ref={(i) => {this.user = i}}
+                value={this.state.user}
+                onChange={doChange}
+              />
+            </label><br />
+            <label>비밀번호: <br/>
+              <input type='password' name='pass'
+                ref={(i) => {this.pass = i}}
+                value={this.state.pass}
+                onChange={doChange}
+              />
+            </label><br />
+            <input type='submit' value='전송'/>
+          </form>
+        )  
+      }
+
+      doChange (e) {
+        const key = e.target.name
+        this.setState({
+          [key]: e.target.value
+        })
+      }
+
+      doSubmit (e) {
+        e.preventDefault()
+        // 값이 없을 경우 input 요소에 초점을 맞춤
+        if (!this.state.user) {
+          this.user.focus()
+          return
+        }
+        if (!this.state.pass){
+          this.pass.focus()
+          return
+        }
+        window.alert(JSON.stringify(this.state))
+      }
+    } // end of LoginForm
+
+    // DOM의 내용 변경
+    ReactDOM.render(
+      <div><LoginForm /></div>,
+      document.getElementById('root')
+    )
+  </script>
+</body>
+</html>
