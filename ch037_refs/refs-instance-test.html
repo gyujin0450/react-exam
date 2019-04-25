@@ -16,7 +16,8 @@
         super(props)
         this.state = { value: ''}
       }
-      // 렌더링
+      // 렌더링 : render() 메서드의 반환값은 
+      // 실제 DOM 요소와 전혀 관계가 없는 리액트 객체임
       render(){
         this.preInput = <input 
           type='text'  
