@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 import './App.css'
+
+// SuperAgent 사용 선언 (3.7)
 import request from 'superagent'
+
+// 입력 양식 다루기(3.8)
+import { TextFrom } from './componemts/TextForm'
+import { CBoxForm } from './componemts/CBoxForm'
+import { TextAreaFrom } from './componemts/TextAreaFrom'
+import { RadioForm } from './componemts/RadioForm'
+import { SelectForm } from './componemts/SelectForm'
 
 class App extends Component {
   constructor (props) {
@@ -48,9 +57,24 @@ class App extends Component {
 
     return (
       <div className="App">
+        <p>3.7.3 JSON을 읽어 선택박스 만들기</p>
         과일: <select>{options}</select>
-      </div>
-    )
+        <hr />
+        <p>3.8.1 텍스트 박스</p>
+        <TextFrom />
+        <hr />
+        <p>3.8.2 텍스트 박스</p>
+        <CBoxForm />
+        <hr />
+        <p>3.8.3 텍스트 에리어</p>
+        <TextAreaFrom />
+        <hr />
+        <p>3.8.4 라디어 버튼</p>
+        <RadioForm items={['초콜릿','과자','콜라']} />
+        <hr />
+        <p>3.8.5 선택박스</p>
+        <SelectForm items={['초콜릿','과자','콜라']} value='콜라'/>
+      </div>)
   }
 }
 
